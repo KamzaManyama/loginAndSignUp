@@ -81,12 +81,12 @@ loginButton.addEventListener('click', function(e) {
     // If validation passes
     if (valid) {
         alert('Login successful!');
-        // Optionally submit the form here, e.g., loginForm.submit();
+        
     }
 });
 
 // Validate registration form fields
-// Validate registration form fields
+
 registerButton.addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -139,7 +139,6 @@ registerButton.addEventListener('click', function(e) {
     // If validation passes
     if (valid) {
         alert('Registration successful!');
-        // Optionally submit the form here
-        // document.getElementById('register-form').submit();
+        
     }
 });
