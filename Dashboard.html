@@ -12,13 +12,33 @@
         }
 
         body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: #f4f4f4;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(background.png);
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    position: relative; /* Allows for overlay positioning */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body::before {
+    content: ""; /* Creates a pseudo-element */
+    position: absolute; /* Positions it relative to the body */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity for the overlay */
+    z-index: 1; /* Places the overlay above the background image */
+}
+
+.container {
+    position: relative; /* Ensures the content is above the overlay */
+    z-index: 2; /* Places the content above the overlay */
+}
+
 
         .container {
             background: #fff;
@@ -39,6 +59,7 @@
             width: 80%;
             max-width: 200px;
             margin-bottom: 20px;
+            margin-left: 15%;
         }
 
         label {
@@ -76,6 +97,66 @@
             background: #d0a300; /* Darker shade for hover */
         }
 
+        /* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* Center the modal */
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #f0c300; /* UniCentral color */
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal-content button {
+    background: #f0c300;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.modal-content button:hover {
+    background: #d0a300; /* Darker hover color */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+
         .toggle-link {
             display: block;
             margin-top: 10px;
@@ -105,11 +186,119 @@
             display: none;
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
-        }
+        /* For devices with width up to 768px (Tablets) */
+/* For devices with width up to 768px (Tablets) */
+@media (max-width: 768px) {
+    .container {
+        width: 80%; /* Adjust width to fit better on tablets */
+        max-width: 350px; /* Maintain a reasonable max-width */
+        padding: 20px; /* Reduce padding */
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    img.logo {
+        width: 70%;
+        max-width: 180px;
+    }
+
+    input {
+        padding: 8px;
+    }
+
+    #submit {
+        padding: 8px;
+    }
+}
+
+/* For devices with width up to 480px (Small devices like smartphones) */
+@media (max-width: 480px) {
+    .container {
+        width: 85%; /* Reduce width for smaller screens */
+        max-width: 300px; /* Ensure the max-width is smaller */
+        padding: 15px; /* Decrease padding */
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    img.logo {
+        width: 65%;
+        max-width: 160px;
+    }
+
+    input {
+        padding: 7px;
+    }
+
+    #submit {
+        padding: 7px;
+    }
+
+    .toggle-link {
+        font-size: 0.9em;
+    }
+
+    .forgot-password {
+        font-size: 0.85em;
+    }
+}
+
+/* For devices with width up to 320px (Very small devices) */
+@media (max-width: 320px) {
+    .container {
+        width: 90%; /* Narrower width for very small screens */
+        max-width: 280px; /* Further reduce max-width */
+        padding: 10px; /* Reduce padding for tight screens */
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    img.logo {
+        width: 55%;
+        max-width: 130px;
+    }
+
+    input {
+        padding: 6px;
+    }
+
+    #submit {
+        padding: 6px;
+    }
+}
+
+
+/* Basic button styling */
+button, input[type="submit"] {
+    background-color: #f0c300; /* Use your brand color */
+    color: #222; /* Dark gray for text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Spacing */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Button hover effect */
+button:hover, input[type="submit"]:hover {
+    background-color: #e0b800; /* Darken on hover */
+}
+
+/* Disabled button styling */
+button:disabled, input[type="submit"]:disabled {
+    background-color: #ccc; /* Gray background */
+    cursor: not-allowed; /* Not allowed cursor */
+}
+
+
+       
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -126,42 +315,66 @@
 </head>
 <body>
     <div class="container">
-        <img src="myone.svg" alt="UniCentral Logo" class="logo"> <!-- Update with the correct logo path -->
+        <img src="myone.svg" alt="UniCentral Logo" class="logo">
         <h2>Login</h2>
-        <form class="login-form" action="login.php" method="post">
+        <form class="login-form" action="login.php" method="post" id="login-form">
             <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Username" required>
-
+            <input type="text" id="username" placeholder="Username">
+            <div id="username-error" class="error-message"></div>
+            
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="password" placeholder="Password">
+            <div id="password-error" class="error-message"></div>
+    
+            <!-- Forgot Password Link -->
+             <div class="forgot-password">
+                <a href="#" id="forgot-password-link">Forgot Password?</a>
+             </div>
 
-            <div class="forgot-password">
-                <a href="forgot-password.php">Forgot Password?</a>
+            
+
+            <!-- Forgot Password Modal -->
+            <div id="forgot-password-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Forgot Password</h2>
+                    <p>Please enter your email to reset your password:</p>
+                    <input type="email" id="forgot-email" placeholder="Enter your email">
+                    <button type="button" id="send-email">Send Email</button>
+                </div>
             </div>
-
-            <input type="submit" id="submit" value="Login">
+    
+            <button type="button" id="login-submit">Login</button>
             <a href="#" class="toggle-link">Register!</a>
         </form>
-
-        <form class="register-form" action="register.php" method="post">
+    
+        <form class="register-form" action="register.php" method="post" id="register-form">
             <label for="first-name">First Name</label>
-            <input type="text" id="first-name" placeholder="First Name" required>
-
+            <input type="text" id="first-name" placeholder="First Name">
+            <div id="first-name-error" class="error-message"></div>
+    
             <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" placeholder="Last Name" required>
-
+            <input type="text" id="last-name" placeholder="Last Name">
+            <div id="last-name-error" class="error-message"></div>
+    
             <label for="email">E-mail Address</label>
-            <input type="email" id="email" placeholder="E-mail Address" required>
-
+            <input type="email" id="email" placeholder="E-mail Address">
+            <div id="email-error" class="error-message"></div>
+    
             <label for="password-register">Password</label>
-            <input type="password" id="password-register" placeholder="Password" required>
-
+            <input type="password" id="password-register" placeholder="Password">
+            <div id="password-register-error" class="error-message"></div>
+    
             <label for="confirm-password">Confirm Password</label>
-            <input type="password" id="confirm-password" placeholder="Confirm Password" required>
-
-            <input type="submit" id="submit" value="Register">
+            <input type="password" id="confirm-password" placeholder="Confirm Password">
+            <div id="confirm-password-error" class="error-message"></div>
+    
+            <button type="button" id="register-submit">Register</button>
             <a href="#" class="toggle-link">Login!</a>
         </form>
     </div>
+    
+    <script src="validation.js"></script>
+    
 </body>
 </html>
